@@ -134,3 +134,4 @@ The app will be accessible at `http://localhost:5555` in your browser.
 - **Sentence Transformers**: Used for generating movie embeddings and fine-tuning the recommendation model.
 - **MongoDB**: Used for storing and managing movie data and similarity matrices.
 - **Movie Database (TMDB)**: For retrieving movie data (if integrated).
+- **Render**: Deployed the app on **Render** for easy access to the live version. [Visit the app](https://movique-u71e.onrender.com).
