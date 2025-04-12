@@ -2,7 +2,9 @@ from pymongo import MongoClient, ASCENDING
 import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz
+import os
 
+#connection_string = os.getenv("MONGO_URI")
 # Replace this with your connection string
 connection_string = "mongodb+srv://nem2604:ieO9q3UhlOZwIvrW@cluster-movie.aqzobmz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-movie"
 
