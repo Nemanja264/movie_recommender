@@ -56,23 +56,23 @@ The project consists of the following files:
 
 ```
 /movie-recommender-app
-?
-??? app.py                # Flask backend
-??? csv_saver.py          # Saves movies from TMDB API in csv format
-??? movie_recommender.py  # Movie recommendation logic
-??? db.py                 # MongoDB database interaction
-??? requirements.txt      # Python dependencies
-??? static/
-?    ??? css/
-?    ?    ??? style.css    # Stylesheet for the frontend
-?    ??? js/
-?         ??? script.js   # JavaScript for the frontend        
-??? templates/
-?   ??? index.html        # HTML file for the frontend
-??? movie_rec200/         # Fine-tuned machine learning model directory
-??? Fine Tuning/          # Code for fine-tuning machine learning model directory
-??? movies.csv            # Movie dataset for recommendations
-??? genres.json           # Genre mapping file for movie genres
+│
+├── app.py                # Flask backend
+├── csv_saver.py          # Saves movies from TMDB API in csv format
+├── movie_recommender.py  # Movie recommendation logic
+├── db.py                 # MongoDB database interaction
+├── requirements.txt      # Python dependencies
+├── static/
+│    └── css/
+│    │    └── style.css    # Stylesheet for the frontend
+│    └── js/
+│         └── script.js   # JavaScript for the frontend        
+├── templates/
+│   └── index.html        # HTML file for the frontend
+├── movie_rec200/         # Fine-tuned machine learning model directory
+├── Fine Tuning/          # Code for fine-tuning machine learning model directory
+├── movies.csv            # Movie dataset for recommendations
+└── genres.json           # Genre mapping file for movie genres
 ```
 
 ### **File Descriptions**:
