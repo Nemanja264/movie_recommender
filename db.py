@@ -1,5 +1,4 @@
 from pymongo import MongoClient, ASCENDING
-import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz
 import os
@@ -19,7 +18,7 @@ client = MongoClient(connection_string)
 # Get the database and collection
 db = client['movie-recommender']
 collection = db['similarity_matrix_tuned200']
-collection.create_index([('movie_id', ASCENDING)])
+collection.create_index([('movie_id', ASCENDING)]) # makes searching faster
 
 def fill_collection(collection, movies_df):
     similarity_matrix = load_npz("similarity_matrix_tuned200.npz")

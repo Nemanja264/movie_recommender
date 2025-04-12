@@ -5,7 +5,7 @@ import numpy as np
 from scipy.sparse import csr_matrix, save_npz, load_npz
 import heapq
 import ast
-from db import get_movie_info, get_similar_movies, get_similar_movies_info
+from db import get_similar_movies, get_similar_movies_info
 
 class MovieRecommender:
     def __init__(self, df, genres_map):
