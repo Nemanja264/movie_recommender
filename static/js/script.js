@@ -70,6 +70,19 @@ function printRecommendations(movies)
     });
 }
 
+function addLink(host, URL, textContent)
+{
+    
+    const link = document.createElement('a');
+    link.className = "link";
+    link.href = URL;
+    link.textContent = textContent;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    host.appendChild(link);
+}
+
 function drawMovie(movie, i, moviesCont)
 {
     const p = document.createElement('p');
@@ -78,14 +91,7 @@ function drawMovie(movie, i, moviesCont)
     const imdb_link = movie['imdb_link'];
     if(imdb_link)
     {
-        const link = document.createElement('a');
-        link.className = "link";
-        link.href = imdb_link;
-        link.textContent = "[ IMDB ]";
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-
-        p.appendChild(link);
+        addLink(p, imdb_link, "[ IMDB ]");
     }
 
     moviesCont.appendChild(p);
@@ -96,9 +102,15 @@ async function recommendMovie()
     try 
     {
         const movieTitle = document.querySelector('.movie-input').value.trim();
-        let numRecs = document.querySelector('.numRecs-input').value;
         if(movieTitle === ""){
             alert("Please enter movie title");
+            return;
+        }
+
+        let numRecs = document.querySelector('.numRecs-input').value;
+        
+        if(numRecs <= 0){
+            alert("Number of movies must be positive");
             return;
         }
 
@@ -112,7 +124,7 @@ async function recommendMovie()
         if(result)
             printRecommendations(result);
         else
-            alert("Please enter another movie name");
+            alert("No recommendations found for this movie. Please try a different movie.");
     }
     catch (error) 
     {
