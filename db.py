@@ -4,9 +4,8 @@ import pandas as pd
 from scipy.sparse import load_npz
 import os
 
-#connection_string = os.getenv("MONGO_URI")
-# Replace this with your connection string
-connection_string = "mongodb+srv://nem2604:ieO9q3UhlOZwIvrW@cluster-movie.aqzobmz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-movie"
+connection_string = os.getenv("MONGO_URI")
+#connection_string = "mongodb+srv://nem2604:ieO9q3UhlOZwIvrW@cluster-movie.aqzobmz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-movie"
 
 movies_df = pd.read_csv("movies.csv")
 movies_df = movies_df.drop_duplicates(subset=["title", "release_date"]).reset_index(drop=True)
@@ -18,17 +17,16 @@ movies_df['release_year'] = movies_df['release_year'].fillna(1900).astype(int)
 client = MongoClient(connection_string)
 
 # Get the database and collection
-db = client['movie-recommender']  # Use your actual database name here
-collection = db['similarity_matrix_tuned200']  # Example collection name
+db = client['movie-recommender']
+collection = db['similarity_matrix_tuned200']
 collection.create_index([('movie_id', ASCENDING)])
 
 def fill_collection(collection, movies_df):
     similarity_matrix = load_npz("similarity_matrix_tuned200.npz")
 
     bulk_data = []
-    # Example: Fetch all movie similarity data
     for i,_ in enumerate(similarity_matrix):
-        movie = movies_df.iloc[i]  # Get movie details by index
+        movie = movies_df.iloc[i]
         
         start_idx = similarity_matrix.indptr[i]
         end_idx = similarity_matrix.indptr[i + 1]
@@ -40,7 +38,7 @@ def fill_collection(collection, movies_df):
         similar_movies = sorted(sim_scores, key=lambda x: x[1], reverse=True)[1:101]
 
         similarity_data = {
-            'movie_id': int(movie['id']),  # TMDB movie ID
+            'movie_id': int(movie['id']),
             'title': str(movie['title']),
             'release_year': str(movie['release_year']),
             'imdb_link': str(movie['imdb_url']),
