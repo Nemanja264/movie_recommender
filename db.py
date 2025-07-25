@@ -4,7 +4,6 @@ from scipy.sparse import load_npz
 import os
 
 connection_string = os.getenv("MONGO_URI")
-#connection_string = "mongodb+srv://nem2604:ieO9q3UhlOZwIvrW@cluster-movie.aqzobmz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster-movie"
 
 movies_df = pd.read_csv("movies.csv")
 movies_df = movies_df.drop_duplicates(subset=["title", "release_date"]).reset_index(drop=True)

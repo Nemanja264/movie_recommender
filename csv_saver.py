@@ -1,10 +1,11 @@
 import time
 from requests import get
+import os
 import pandas as pd
 import json
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-API_KEY = "1ddbd50c511eba6d0d83d2b19a5b77b3"
+API_KEY = os.getenv("MOVIE_API_KEY")
 BASE_URL = f"https://api.themoviedb.org/3/discover/movie?api_key={API_KEY}&language=en-US&sort_by=popularity.desc"
 GENRE_URL = f"https://api.themoviedb.org/3/genre/movie/list?api_key={API_KEY}&language=en-US"
 
